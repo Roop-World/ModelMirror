@@ -16,6 +16,12 @@ dependencies = [
   "jsonschema>=4.0"
 ]
 
+[project.urls]
+Homepage = "https://roopsdevassist.com/modelmirror/"
+Repository = "https://github.com/Roop-World/ModelMirror"
+Changelog = "https://github.com/Roop-World/ModelMirror/blob/main/CHANGELOG.md"
+Issues = "https://github.com/Roop-World/ModelMirror/issues"
+
 [project.optional-dependencies]
 dev = [
   "pytest>=8.0"

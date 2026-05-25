@@ -4,6 +4,8 @@
 
 ModelMirror is an offline human prompt-pack debugger for agent workflows.
 
+Project page: https://roopsdevassist.com/modelmirror/
+
 It lets a human step into the model's seat before an LLM call happens. Load the exact prompt bundle your agent runtime would send, inspect the messages, tools, retrieved context, and constraints, then emulate what the model should do: `RESPOND`, `TOOL_CALL`, `CLARIFY`, or `REFUSE`.
 
 ModelMirror validates the bundle, records structured PASS/FAIL artifacts, and helps teams tighten expectations before changing either the prompt pack or the harness that produced it.
