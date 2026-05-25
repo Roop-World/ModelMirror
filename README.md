@@ -1,5 +1,7 @@
 # ModelMirror
 
+[![Tests](https://github.com/Roop-World/ModelMirror/actions/workflows/tests.yml/badge.svg)](https://github.com/Roop-World/ModelMirror/actions/workflows/tests.yml)
+
 ModelMirror is an offline human prompt-pack debugger for agent workflows.
 
 It lets a human step into the model's seat before an LLM call happens. Load the exact prompt bundle your agent runtime would send, inspect the messages, tools, retrieved context, and constraints, then emulate what the model should do: `RESPOND`, `TOOL_CALL`, `CLARIFY`, or `REFUSE`.
@@ -122,6 +124,12 @@ The job is to make prompt-pack expectations visible and testable before runtime.
 The natural next step is an integrated agent runtime testing harness: humans should be able to test the runtime activities they expect from an LLM, compare those expectations against the actual harness behavior, and decide whether to change the prompt pack, the tool contract, or the harness itself.
 
 That future layer should remain compatible with ModelMirror's core rule: the base debugger stays local, deterministic, and non-executing unless a caller explicitly opts into a separate runtime adapter.
+
+See `ROADMAP.md` for the current release path.
+
+## Releases
+
+See `CHANGELOG.md` for release notes.
 
 ## Security and privacy
 
