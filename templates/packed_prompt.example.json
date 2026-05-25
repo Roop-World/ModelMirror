@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "conversation": {
+    "system": "You are a tool-using assistant. Respond with JSON when calling tools.",
+    "developer": "If data is missing, ask for clarification.",
+    "user": "Find weather for Mumbai and summarize briefly."
+  },
+  "context": {
+    "retrieved_snippets": [
+      {
+        "id": "snippet_001",
+        "source": "manual",
+        "text": "Weather queries should include city and units.",
+        "metadata": {
+          "topic": "weather",
+          "priority": 1
+        }
+      },
+      {
+        "id": "snippet_002",
+        "source": "manual",
+        "text": "If uncertain, ask a clarifying question.",
+        "metadata": {
+          "topic": "behavior"
+        }
+      }
+    ]
+  },
+  "tools": [
+    {
+      "name": "get_weather",
+      "description": "Fetch current weather by city and units.",
+      "json_schema": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "string"
+          },
+          "units": {
+            "type": "string",
+            "enum": ["metric", "imperial"]
+          }
+        },
+        "required": ["city"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "lookup_timezone",
+      "description": "Lookup timezone by city.",
+      "json_schema": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "string"
+          }
+        },
+        "required": ["city"],
+        "additionalProperties": false
+      }
+    }
+  ],
+  "runtime": {
+    "mode": "agent",
+    "constraints": {
+      "max_output_tokens": 1024,
+      "model_name": "example-model",
+      "temperature": 0
+    }
+  },
+  "raw": {
+    "framework": "generic",
+    "trace_id": "demo-trace"
+  }
+}

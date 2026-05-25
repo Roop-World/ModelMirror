@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "conversation": {
+    "system": "You are a concise assistant.",
+    "developer": "Return deterministic outputs.",
+    "user": "Say hello."
+  },
+  "context": {
+    "retrieved_snippets": []
+  },
+  "tools": [],
+  "runtime": {
+    "mode": "agent",
+    "constraints": {}
+  },
+  "raw": {}
+}

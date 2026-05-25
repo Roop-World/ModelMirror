@@ -1,0 +1,20 @@
+{
+  "bundle_sha256": "f42bcfda78aeebb287f5c6d888f28bed689d6cf73620f761ab0dff11aa0b6dd5",
+  "canonical_output": "AUTO_FINALIZED_FOR_VERIFICATION",
+  "chosen_action": "RESPOND",
+  "diagnostics": {
+    "failure_modes": [],
+    "suggestions": []
+  },
+  "drafted_text": "AUTO_FINALIZED_FOR_VERIFICATION",
+  "notes": {
+    "assumptions": "Auto-finalized for non-interactive verification.",
+    "contradictions": "",
+    "extra": {},
+    "missing_context": ""
+  },
+  "run_id": "20260305T135037Z__f42bcfda78ae",
+  "schema_version": "1.0",
+  "status": "PASS",
+  "tool_calls": []
+}

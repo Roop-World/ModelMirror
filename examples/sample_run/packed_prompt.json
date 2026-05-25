@@ -1,0 +1,82 @@
+{
+  "context": {
+    "retrieved_snippets": [
+      {
+        "id": "snippet_001",
+        "metadata": {
+          "priority": 1,
+          "topic": "weather"
+        },
+        "source": "manual",
+        "text": "Weather queries should include city and units."
+      },
+      {
+        "id": "snippet_002",
+        "metadata": {
+          "topic": "behavior"
+        },
+        "source": "manual",
+        "text": "If uncertain, ask a clarifying question."
+      }
+    ]
+  },
+  "conversation": {
+    "developer": "If data is missing, ask for clarification.",
+    "system": "You are a tool-using assistant. Respond with JSON when calling tools.",
+    "user": "Find weather for Mumbai and summarize briefly."
+  },
+  "raw": {
+    "framework": "generic",
+    "trace_id": "demo-trace"
+  },
+  "runtime": {
+    "constraints": {
+      "max_output_tokens": 1024,
+      "model_name": "example-model",
+      "temperature": 0
+    },
+    "mode": "agent"
+  },
+  "schema_version": "1.0",
+  "tools": [
+    {
+      "description": "Fetch current weather by city and units.",
+      "json_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "city": {
+            "type": "string"
+          },
+          "units": {
+            "enum": [
+              "metric",
+              "imperial"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "city"
+        ],
+        "type": "object"
+      },
+      "name": "get_weather"
+    },
+    {
+      "description": "Lookup timezone by city.",
+      "json_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "city": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "city"
+        ],
+        "type": "object"
+      },
+      "name": "lookup_timezone"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+[
+  {
+    "id": "SUG_INVALID_BUNDLE_SCHEMA_01",
+    "applies_to": ["INVALID_BUNDLE_SCHEMA"],
+    "title": "Align bundle shape with schema",
+    "lines": [
+      "Ensure top-level keys are exactly: schema_version, conversation, context, tools, runtime, raw.",
+      "Move framework-specific payload into raw instead of adding extra root fields.",
+      "Verify conversation.system and conversation.user are non-empty strings."
+    ],
+    "confidence": "HIGH",
+    "rationale": "Most bundle validation failures come from missing required fields or extra root keys."
+  },
+  {
+    "id": "SUG_INVALID_JSON_OUTPUT_01",
+    "applies_to": ["INVALID_JSON_OUTPUT"],
+    "title": "Fix JSON before finalize",
+    "lines": [
+      "Use the tool args JSON editor and ensure it parses to an object.",
+      "Return only valid JSON for tool arguments.",
+      "Include only required fields expected by the tool schema."
+    ],
+    "confidence": "HIGH",
+    "rationale": "Schema parse and argument-shape errors are deterministic and resolved by valid JSON."
+  },
+  {
+    "id": "SUG_JSON_TRUNCATION_RISK_01",
+    "applies_to": ["JSON_TRUNCATION_RISK"],
+    "title": "Reduce output size",
+    "lines": [
+      "Keep responses brief.",
+      "If calling a tool, return only JSON.",
+      "Do not include explanatory text with JSON.",
+      "Include only required arguments."
+    ],
+    "confidence": "MED",
+    "rationale": "Shorter structured output lowers truncation risk under token limits."
+  },
+  {
+    "id": "SUG_PROSE_JSON_MIX_01",
+    "applies_to": ["PROSE_JSON_MIX"],
+    "title": "Separate prose from tool JSON",
+    "lines": [
+      "Use TOOL_CALL mode with JSON args only.",
+      "Move explanations into notes instead of draft output.",
+      "Keep canonical tool envelope free of prose."
+    ],
+    "confidence": "HIGH",
+    "rationale": "Mixing prose with structured envelopes commonly breaks downstream parsers."
+  },
+  {
+    "id": "SUG_TOOL_SCHEMA_AMBIGUOUS_01",
+    "applies_to": ["TOOL_SCHEMA_AMBIGUOUS"],
+    "title": "Clarify tool schema",
+    "lines": [
+      "Provide a non-empty JSON schema object for each tool.",
+      "Declare required fields explicitly in the schema.",
+      "Avoid placeholder schemas like {} for production gating."
+    ],
+    "confidence": "HIGH",
+    "rationale": "Ambiguous or empty schemas prevent reliable argument validation."
+  },
+  {
+    "id": "SUG_MISSING_CONTEXT_01",
+    "applies_to": ["MISSING_CONTEXT"],
+    "title": "Improve context coverage",
+    "lines": [
+      "Add the missing facts as retrieved_snippets before execution.",
+      "Include source identifiers to improve traceability.",
+      "Limit assumptions and record them explicitly in notes.assumptions."
+    ],
+    "confidence": "MED",
+    "rationale": "Insufficient context frequently causes unstable tool choices and weak outputs."
+  },
+  {
+    "id": "SUG_CONTRADICTORY_INSTRUCTIONS_01",
+    "applies_to": ["CONTRADICTORY_INSTRUCTIONS"],
+    "title": "Resolve instruction conflicts",
+    "lines": [
+      "Prioritize a single source of truth for response rules.",
+      "Remove contradictory constraints between system and developer prompts.",
+      "Document tie-breaker logic in the developer prompt."
+    ],
+    "confidence": "MED",
+    "rationale": "Conflicting instructions cause non-deterministic behavior in agent outputs."
+  }
+]

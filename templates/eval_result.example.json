@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "run_id": "20260305T120000Z__abcdef123456",
+  "bundle_sha256": "abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890",
+  "status": "FAIL",
+  "chosen_action": "TOOL_CALL",
+  "drafted_text": "Calling tool with weather params.",
+  "canonical_output": {
+    "action": "tool_call",
+    "tool_name": "get_weather",
+    "args": {
+      "city": "Mumbai",
+      "units": "metric"
+    }
+  },
+  "tool_calls": [
+    {
+      "tool_name": "get_weather",
+      "args": {
+        "city": "Mumbai",
+        "units": "metric"
+      }
+    }
+  ],
+  "diagnostics": {
+    "failure_modes": [
+      {
+        "code": "PROSE_JSON_MIX",
+        "severity": "MED",
+        "message": "Draft text contains prose while tool-call JSON output is expected.",
+        "evidence": null
+      }
+    ],
+    "suggestions": [
+      {
+        "id": "SUG_PROSE_JSON_MIX_01",
+        "applies_to": ["PROSE_JSON_MIX"],
+        "title": "Separate prose from tool JSON",
+        "lines": [
+          "Use TOOL_CALL mode with JSON args only.",
+          "Move explanations into notes instead of draft output.",
+          "Keep canonical tool envelope free of prose."
+        ],
+        "confidence": "HIGH",
+        "rationale": "Mixing prose with structured envelopes commonly breaks downstream parsers."
+      }
+    ]
+  },
+  "notes": {
+    "missing_context": "",
+    "contradictions": "",
+    "assumptions": "Tool call intended for downstream executor",
+    "extra": {}
+  }
+}
